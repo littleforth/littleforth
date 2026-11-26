@@ -1,5 +1,8 @@
 /* pico2.c - Raspberry Pi Pico 2 (RP2350, Cortex-M33, secure) board layer.
  *
+ * Entry: boot ROM -> stub() (flash) -> kmain() (SRAM) -> kernel_init() and
+ * quit() in src/interp.c. There is no main() on the boards.
+ *
  * Boot: the boot ROM finds the IMAGE_DEF block below in the first 4 KB of
  * flash, takes SP and the reset vector from the start of the image, and runs
  * stub() from flash (XIP). The stub copies the whole kernel into SRAM and runs

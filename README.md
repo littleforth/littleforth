@@ -56,6 +56,24 @@ Made for learning and experimenting: see the stack after every line, the machine
 - [Building from source](docs/building.md)
 - [Changes](CHANGELOG.md)
 
+## Repository layout
+
+| Folder | What is in it |
+|---|---|
+| [src/](src) | The kernel: interpreter, compiler, code generator, words |
+| [board/](board) | One file per board: startup, clocks, console, linker script |
+| [lib/](lib) | Forth libraries: RP2350 drivers, the Thumb-2 assembler, `SAVE` |
+| [examples/](examples) | Example programs for the Pico 2 |
+| [extension/](extension) | The VS Code extension |
+| [test/](test) | Kernel tests, including the Hayes CORE suite |
+| [tools/](tools) | Build, test and code-generation scripts |
+| [docs/](docs) | Documentation |
+
+**Where it starts:** on the Pico 2, `kmain()` in
+[board/pico2.c](board/pico2.c) sets up the chip, then calls `kernel_init()`
+and `quit()`, the outer interpreter, in [src/interp.c](src/interp.c). The
+host build's `main()` is in [board/host.c](board/host.c).
+
 ## Help and ideas
 
 Bug reports, questions and ideas are welcome in

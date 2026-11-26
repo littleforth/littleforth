@@ -1,4 +1,9 @@
-/* interp.c - builtin table, dictionary, text interpreter, compiler words. */
+/* interp.c - builtin table, dictionary, text interpreter, compiler words.
+ *
+ * Every board's startup ends here: kernel_init() sets up the system state and
+ * the dictionary, then quit(), the outer interpreter, reads and runs lines
+ * for ever. Board entry points: kmain() in board/pico2.c, main() in
+ * board/host.c, the reset vector in board/cortexm.c (QEMU). */
 #include "forth.h"
 #include "cg.h"
 #include "wordlist.h"
