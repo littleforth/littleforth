@@ -1,0 +1,757 @@
+{
+  "name": "littleforth",
+  "displayName": "littleFORTH",
+  "description": "A small, native Forth for microcontrollers: type a line, it runs on the chip. Live stacks, values, memory and registers; debugger and profiler.",
+  "version": "0.5.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/littleforth/littleforth"
+  },
+  "bugs": {
+    "url": "https://github.com/littleforth/littleforth/issues"
+  },
+  "homepage": "https://github.com/littleforth/littleforth",
+  "icon": "media/icon.png",
+  "publisher": "littleforth",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers",
+    "Notebooks"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onLanguage:forth",
+    "workspaceContains:forth.json",
+    "onView:forth.board",
+    "onNotebook:forth-notebook",
+    "onDebugResolve:forth"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "forth",
+        "aliases": [
+          "Forth"
+        ],
+        "extensions": [
+          ".fth",
+          ".fr",
+          ".4th"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "forth",
+        "scopeName": "source.forth",
+        "path": "./syntaxes/forth.tmLanguage.json"
+      }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": "forth.json",
+        "url": "./forth.schema.json"
+      }
+    ],
+    "configuration": {
+      "title": "Forth",
+      "properties": {
+        "forth.port": {
+          "type": "string",
+          "default": "",
+          "description": "Serial port (e.g. COM3), when forth.json gives none. Empty: found by the board's USB IDs, or asked."
+        },
+        "forth.board": {
+          "type": "string",
+          "default": "",
+          "description": "The board whose register names are known when no board is connected and there is no forth.json (its name as the Board view shows it). Empty: the first board this extension knows."
+        },
+        "forth.unknownWords": {
+          "type": "boolean",
+          "default": true,
+          "description": "Warn about words the board would not know, and words used before their definition."
+        },
+        "forth.stackLens": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the stack after each line of Forth, worked out from the stack comments, and warn about stack mistakes."
+        },
+        "forth.hotReload": {
+          "type": "boolean",
+          "default": true,
+          "description": "When a file that was sent is saved, send the words that changed and the words that use them."
+        },
+        "forth.liveValues": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the board's current value of each register and VARIABLE at the end of the lines that name them."
+        },
+        "forth.gdbServer": {
+          "type": "string",
+          "default": "localhost:3333",
+          "description": "The debugger's GDB server (OpenOCD, J-Link GDB server), when forth.json gives none."
+        },
+        "forth.startOpenocd": {
+          "type": "boolean",
+          "default": true,
+          "description": "Start OpenOCD for the board when attaching, if nothing listens on localhost:3333 (Raspberry Pi's build from the Pico SDK, else one on PATH)."
+        },
+        "forth.openocd": {
+          "type": "string",
+          "default": "",
+          "description": "Your own command line for the GDB server, started when attaching (e.g. \"C:\\...\\openocd.exe\" -s \"C:\\...\\scripts\" -f ...). Empty: the board's default."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "forth.connect",
+        "title": "Connect",
+        "category": "Forth",
+        "icon": "$(plug)"
+      },
+      {
+        "command": "forth.disconnect",
+        "title": "Disconnect",
+        "category": "Forth",
+        "icon": "$(debug-disconnect)"
+      },
+      {
+        "command": "forth.sendFile",
+        "title": "Send File",
+        "category": "Forth",
+        "icon": "$(play)"
+      },
+      {
+        "command": "forth.sendLine",
+        "title": "Send Line or Selection",
+        "category": "Forth"
+      },
+      {
+        "command": "forth.stop",
+        "title": "Stop",
+        "category": "Forth"
+      },
+      {
+        "command": "forth.flash",
+        "title": "Flash Firmware",
+        "category": "Forth",
+        "icon": "$(zap)"
+      },
+      {
+        "command": "forth.save",
+        "title": "Save Words to Flash",
+        "category": "Forth",
+        "icon": "$(save)"
+      },
+      {
+        "command": "forth.reset",
+        "title": "Reset the Board",
+        "category": "Forth",
+        "icon": "$(debug-restart)"
+      },
+      {
+        "command": "forth.console",
+        "title": "Show Console",
+        "category": "Forth",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "forth.choosePort",
+        "title": "Choose Serial Port",
+        "category": "Forth"
+      },
+      {
+        "command": "forth.menu",
+        "title": "Board Menu",
+        "category": "Forth"
+      },
+      {
+        "command": "forth.inspect",
+        "title": "Inspect Word",
+        "category": "Forth"
+      },
+      {
+        "command": "forth.inspectAtCursor",
+        "title": "Inspect Word at Cursor",
+        "category": "Forth"
+      },
+      {
+        "command": "forth.boardPicture",
+        "title": "Show the Board",
+        "category": "Forth",
+        "icon": "$(circuit-board)"
+      },
+      {
+        "command": "forth.plot",
+        "title": "Open the Scope",
+        "category": "Forth",
+        "icon": "$(graph-line)"
+      },
+      {
+        "command": "forth.plotAtCursor",
+        "title": "Plot Word at Cursor",
+        "category": "Forth"
+      },
+      {
+        "command": "forth.newNotebook",
+        "title": "New Notebook",
+        "category": "Forth",
+        "icon": "$(notebook)"
+      },
+      {
+        "command": "forth.debug",
+        "title": "Debug the Board",
+        "category": "Forth",
+        "icon": "$(debug-alt)"
+      },
+      {
+        "command": "forth.profile",
+        "title": "Profile…",
+        "category": "Forth",
+        "icon": "$(flame)"
+      },
+      {
+        "command": "forth.clearProfile",
+        "title": "Clear Profile",
+        "category": "Forth"
+      },
+      {
+        "command": "forth.noBoard",
+        "title": "Work Without a Board",
+        "category": "Forth",
+        "icon": "$(vm)"
+      },
+      {
+        "command": "forth.memory",
+        "title": "Show in Memory",
+        "category": "Forth",
+        "icon": "$(file-binary)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "forth",
+          "title": "Forth",
+          "icon": "media/forth.svg"
+        }
+      ]
+    },
+    "views": {
+      "forth": [
+        {
+          "id": "forth.board",
+          "name": "Board"
+        },
+        {
+          "id": "forth.stacks",
+          "name": "Stacks",
+          "type": "webview"
+        },
+        {
+          "id": "forth.words",
+          "name": "Words"
+        }
+      ]
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "forth.debug",
+          "when": "resourceLangId == forth && forth.connected && !inDebugMode",
+          "group": "navigation"
+        },
+        {
+          "command": "forth.profile",
+          "when": "resourceLangId == forth && forth.connected && !inDebugMode",
+          "group": "navigation"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "forth.connect",
+          "when": "view == forth.board && !forth.connected",
+          "group": "navigation"
+        },
+        {
+          "command": "forth.disconnect",
+          "when": "view == forth.board && forth.connected",
+          "group": "navigation"
+        },
+        {
+          "command": "forth.console",
+          "when": "view == forth.board",
+          "group": "navigation"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "command": "forth.sendFile",
+          "when": "editorLangId == forth",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "forth.menu",
+          "when": "false"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "forth.inspectAtCursor",
+          "when": "editorLangId == forth",
+          "group": "navigation@1"
+        },
+        {
+          "command": "forth.plotAtCursor",
+          "when": "editorLangId == forth",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "forth.plot",
+          "when": "view == forth.words && viewItem == word",
+          "group": "inline"
+        },
+        {
+          "command": "forth.memory",
+          "when": "view == forth.words && viewItem == word",
+          "group": "inline"
+        }
+      ],
+      "debug/variables/context": [
+        {
+          "command": "forth.memory",
+          "when": "debugType == forth",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "forth.sendLine",
+        "key": "shift+enter",
+        "when": "editorTextFocus && editorLangId == forth"
+      },
+      {
+        "command": "forth.stop",
+        "key": "ctrl+.",
+        "when": "forth.connected"
+      },
+      {
+        "command": "forth.sendFile",
+        "key": "ctrl+shift+enter",
+        "when": "editorTextFocus && editorLangId == forth",
+        "mac": "cmd+shift+enter"
+      },
+      {
+        "command": "forth.inspectAtCursor",
+        "key": "ctrl+alt+i",
+        "when": "editorTextFocus && editorLangId == forth"
+      }
+    ],
+    "configurationDefaults": {
+      "editor.semanticTokenColorCustomizations": {
+        "rules": {
+          "function.defaultLibrary.stack:forth": {
+            "foreground": "#A97BFF",
+            "bold": true
+          },
+          "function.defaultLibrary.arith:forth": {
+            "foreground": "#FF4D5E",
+            "bold": true
+          },
+          "function.defaultLibrary.bitwise:forth": {
+            "foreground": "#FF7A00",
+            "bold": true
+          },
+          "function.defaultLibrary.compare:forth": {
+            "foreground": "#FFD000",
+            "bold": true
+          },
+          "function.defaultLibrary.memory:forth": {
+            "foreground": "#19D69B",
+            "bold": true
+          },
+          "function.defaultLibrary.control:forth": {
+            "foreground": "#FF1FA8",
+            "bold": true
+          },
+          "function.defaultLibrary.defining:forth": {
+            "foreground": "#00C2FF",
+            "bold": true
+          },
+          "function.defaultLibrary.io:forth": {
+            "foreground": "#5C8FFF",
+            "bold": true
+          },
+          "function.defaultLibrary.system:forth": {
+            "foreground": "#9AA3AF",
+            "bold": true
+          },
+          "function.defaultLibrary:forth": "#D0D4DB",
+          "keyword.define:forth": {
+            "foreground": "#FFD000",
+            "bold": true
+          },
+          "function.declaration:forth": {
+            "foreground": "#FFFFFF",
+            "bold": true
+          },
+          "function:forth": "#FFFFFF",
+          "variable.readonly:forth": "#2EE6C8",
+          "method:forth": "#2EE6C8",
+          "number:forth": "#FFC58A"
+        },
+        "[Light Modern][Light+][Default Light Modern][Default Light+][Quiet Light][Solarized Light]": {
+          "rules": {
+            "function.defaultLibrary.stack:forth": {
+              "foreground": "#7B2FF7",
+              "bold": true
+            },
+            "function.defaultLibrary.arith:forth": {
+              "foreground": "#D10F28",
+              "bold": true
+            },
+            "function.defaultLibrary.bitwise:forth": {
+              "foreground": "#C85A00",
+              "bold": true
+            },
+            "function.defaultLibrary.compare:forth": {
+              "foreground": "#8F7200",
+              "bold": true
+            },
+            "function.defaultLibrary.memory:forth": {
+              "foreground": "#008A63",
+              "bold": true
+            },
+            "function.defaultLibrary.control:forth": {
+              "foreground": "#C8007F",
+              "bold": true
+            },
+            "function.defaultLibrary.defining:forth": {
+              "foreground": "#0083B0",
+              "bold": true
+            },
+            "function.defaultLibrary.io:forth": {
+              "foreground": "#1E5BE0",
+              "bold": true
+            },
+            "function.defaultLibrary.system:forth": {
+              "foreground": "#5F6773",
+              "bold": true
+            },
+            "function.defaultLibrary:forth": "#3B4048",
+            "keyword.define:forth": {
+              "foreground": "#8F7200",
+              "bold": true
+            },
+            "function.declaration:forth": {
+              "foreground": "#000000",
+              "bold": true
+            },
+            "function:forth": "#000000",
+            "variable.readonly:forth": "#00897B",
+            "method:forth": "#00897B",
+            "number:forth": "#B35A00"
+          }
+        }
+      },
+      "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": [
+              "comment.line.backslash.forth",
+              "comment.block.paren.forth"
+            ],
+            "settings": {
+              "foreground": "#8A93A0"
+            }
+          },
+          {
+            "scope": "comment.block.paren.stack.forth",
+            "settings": {
+              "foreground": "#9FEFFF"
+            }
+          },
+          {
+            "scope": [
+              "string.quoted.double.forth",
+              "keyword.other.string.forth",
+              "string.char.forth"
+            ],
+            "settings": {
+              "foreground": "#B4FF39"
+            }
+          },
+          {
+            "scope": [
+              "keyword.control.import.forth",
+              "string.unquoted.path.forth"
+            ],
+            "settings": {
+              "foreground": "#FFD000",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": "keyword.other.colon.forth",
+            "settings": {
+              "foreground": "#FFD000",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": [
+              "storage.type.forth",
+              "storage.modifier.forth"
+            ],
+            "settings": {
+              "foreground": "#00C2FF",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": "keyword.control.forth",
+            "settings": {
+              "foreground": "#FF1FA8",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": "constant.numeric.forth",
+            "settings": {
+              "foreground": "#FFC58A"
+            }
+          },
+          {
+            "scope": [
+              "entity.name.function.forth",
+              "entity.name.variable.forth"
+            ],
+            "settings": {
+              "foreground": "#FFFFFF",
+              "fontStyle": "bold"
+            }
+          }
+        ],
+        "[Light Modern][Light+][Default Light Modern][Default Light+][Quiet Light][Solarized Light]": {
+          "textMateRules": [
+            {
+              "scope": [
+                "comment.line.backslash.forth",
+                "comment.block.paren.forth"
+              ],
+              "settings": {
+                "foreground": "#6A737D"
+              }
+            },
+            {
+              "scope": "comment.block.paren.stack.forth",
+              "settings": {
+                "foreground": "#007C99"
+              }
+            },
+            {
+              "scope": [
+                "string.quoted.double.forth",
+                "keyword.other.string.forth",
+                "string.char.forth"
+              ],
+              "settings": {
+                "foreground": "#4E8A00"
+              }
+            },
+            {
+              "scope": [
+                "keyword.control.import.forth",
+                "string.unquoted.path.forth"
+              ],
+              "settings": {
+                "foreground": "#8F7200",
+                "fontStyle": "bold"
+              }
+            },
+            {
+              "scope": "keyword.other.colon.forth",
+              "settings": {
+                "foreground": "#8F7200",
+                "fontStyle": "bold"
+              }
+            },
+            {
+              "scope": [
+                "storage.type.forth",
+                "storage.modifier.forth"
+              ],
+              "settings": {
+                "foreground": "#0083B0",
+                "fontStyle": "bold"
+              }
+            },
+            {
+              "scope": "keyword.control.forth",
+              "settings": {
+                "foreground": "#C8007F",
+                "fontStyle": "bold"
+              }
+            },
+            {
+              "scope": "constant.numeric.forth",
+              "settings": {
+                "foreground": "#B35A00"
+              }
+            },
+            {
+              "scope": [
+                "entity.name.function.forth",
+                "entity.name.variable.forth"
+              ],
+              "settings": {
+                "foreground": "#000000",
+                "fontStyle": "bold"
+              }
+            }
+          ]
+        }
+      },
+      "[forth]": {
+        "editor.semanticHighlighting.enabled": true
+      }
+    },
+    "semanticTokenModifiers": [
+      {
+        "id": "stack",
+        "description": "Forth: Stack"
+      },
+      {
+        "id": "arith",
+        "description": "Forth: Arithmetic"
+      },
+      {
+        "id": "bitwise",
+        "description": "Forth: Bitwise"
+      },
+      {
+        "id": "compare",
+        "description": "Forth: Comparison and flags"
+      },
+      {
+        "id": "memory",
+        "description": "Forth: Memory"
+      },
+      {
+        "id": "control",
+        "description": "Forth: Control flow"
+      },
+      {
+        "id": "defining",
+        "description": "Forth: Defining and compiling"
+      },
+      {
+        "id": "io",
+        "description": "Forth: Input, output and text"
+      },
+      {
+        "id": "system",
+        "description": "Forth: System"
+      },
+      {
+        "id": "define",
+        "description": "Forth: : and ;"
+      }
+    ],
+    "notebooks": [
+      {
+        "type": "forth-notebook",
+        "displayName": "Forth Notebook",
+        "selector": [
+          {
+            "filenamePattern": "*.fthnb"
+          }
+        ]
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "forth",
+        "label": "Forth",
+        "languages": [
+          "forth"
+        ],
+        "configurationAttributes": {
+          "attach": {
+            "properties": {
+              "gdb": {
+                "type": "string",
+                "description": "The GDB server, host:port. At localhost:3333 OpenOCD is started for the board if nothing listens.",
+                "default": "localhost:3333"
+              },
+              "stopOnAttach": {
+                "type": "boolean",
+                "description": "Stay halted after attaching (else the CPU runs on until a breakpoint).",
+                "default": false
+              }
+            }
+          }
+        },
+        "initialConfigurations": [
+          {
+            "type": "forth",
+            "request": "attach",
+            "name": "Forth: debug the board"
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "Forth: debug the board",
+            "body": {
+              "type": "forth",
+              "request": "attach",
+              "name": "Forth: debug the board"
+            }
+          }
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "forth"
+      }
+    ]
+  },
+  "dependencies": {
+    "serialport": "^12.0.0"
+  },
+  "scripts": {
+    "vscode:prepublish": "node tools/firmware.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js",
+    "package": "npx --yes @vscode/vsce@3.2.1 package"
+  },
+  "keywords": [
+    "forth",
+    "embedded",
+    "microcontroller",
+    "repl",
+    "interactive",
+    "raspberry pi pico",
+    "rp2350",
+    "education"
+  ],
+  "galleryBanner": {
+    "color": "#171a22",
+    "theme": "dark"
+  },
+  "devDependencies": {
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.2.0"
+  }
+}

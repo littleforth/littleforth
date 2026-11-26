@@ -1,0 +1,105 @@
+{
+"regions":[
+[
+268435456,
+268443284,
+"flash: the kernel's code"
+],
+[
+268959744,
+268994996,
+"flash: the register table (names of the chip's registers)"
+],
+[
+269484032,
+269484108,
+"RAM: the state at the last fault (pc, registers, the data stack)"
+],
+[
+269484108,
+269484112,
+"RAM: IPSR of the interrupt being handled, for fault()"
+],
+[
+269484112,
+269484368,
+"RAM: interrupt handlers (one xt per IRQ, IRQ!)"
+],
+[
+269484368,
+269484388,
+"RAM: the error recovery point (ABORT, THROW)"
+],
+[
+269484388,
+269549924,
+"RAM: the dictionary"
+],
+[
+269549924,
+269550272,
+"RAM: kernel variables (STATE BASE >IN SOURCE HERE LATEST, the input line, WORD, HOLD)"
+],
+[
+269550272,
+269550276,
+"RAM: the pointer to the kernel variables"
+],
+[
+269550276,
+269550788,
+"RAM: the data stack"
+],
+[
+269550788,
+269550792,
+"RAM: characters dropped by the last accept"
+],
+[
+269550792,
+269550793,
+"RAM: something printed on this line"
+],
+[
+269550796,
+271581184,
+"RAM: free, then the return stack (rsp grows down from the top)"
+],
+[
+271581184,
+271597568,
+"flash: the SAVE area (the dictionary SAVE wrote, restored at boot)"
+]
+],
+"cells":{
+"269549924":"STATE",
+"269549928":"BASE",
+"269549932":">IN",
+"269549936":"SOURCE (src)",
+"269549940":"SOURCE (srclen)",
+"269549944":"srcid (0 console, -1 EVALUATE)",
+"269549948":"HERE (dictionary pointer)",
+"269549952":"latest (newest header)",
+"269549956":"LEAVE (LEAVE chain while compiling a loop)",
+"269549960":"hld (pictured numeric output pointer)",
+"269549964":"echo (ACCEPT echoes input when set)",
+"269549968":"blktab (library block name table, 0: none; set at boot from the block header, the builder points it at its RAM table)",
+"269549972":"dot (TYPE.WORD, put together for INSTANCE.WORD), 32 bytes",
+"269550004":"tib, 128 bytes",
+"269550132":"WORD (WORD: counted string), 66 bytes",
+"269550198":"HOLD (<# ... #> builds down from the end), 72 bytes",
+"269550276":"data stack guard (64 cells)",
+"269550532":"data stack: the deepest of 64 cells",
+"269550784":"data stack: the top (psp when empty)"
+},
+"code":[
+[
+268435456,
+268443284
+],
+[
+269484388,
+269549924
+]
+]
+}

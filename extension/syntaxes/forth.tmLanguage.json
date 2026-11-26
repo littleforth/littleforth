@@ -1,0 +1,116 @@
+{
+ "name": "Forth",
+ "scopeName": "source.forth",
+ "comment": "Tokens are whitespace-separated, so every match is bounded by (?<=^|\\s) and (?=\\s|$). Your words, registers and instance words are coloured by the extension (semantic tokens).",
+ "patterns": [
+  {
+   "include": "#include"
+  },
+  {
+   "include": "#comment"
+  },
+  {
+   "include": "#string"
+  },
+  {
+   "include": "#definition"
+  },
+  {
+   "include": "#defining"
+  },
+  {
+   "include": "#control"
+  },
+  {
+   "include": "#number"
+  }
+ ],
+ "repository": {
+  "include": {
+   "match": "^\\s*(\\\\)\\s+(INCLUDE)\\s+(\\S+)(.*)$",
+   "captures": {
+    "1": {
+     "name": "comment.line.backslash.forth"
+    },
+    "2": {
+     "name": "keyword.control.import.forth"
+    },
+    "3": {
+     "name": "string.unquoted.path.forth"
+    },
+    "4": {
+     "name": "comment.line.backslash.forth"
+    }
+   }
+  },
+  "comment": {
+   "patterns": [
+    {
+     "name": "comment.line.backslash.forth",
+     "match": "(?<=^|\\s)\\\\(?=\\s|$).*$"
+    },
+    {
+     "name": "comment.block.paren.stack.forth",
+     "match": "(?<=^|\\s)\\((?=\\s)[^)]*(?<=\\s)--(?=\\s|\\))[^)]*\\)"
+    },
+    {
+     "name": "comment.block.paren.forth",
+     "begin": "(?<=^|\\s)\\.?\\((?=\\s|$)",
+     "end": "\\)"
+    }
+   ]
+  },
+  "string": {
+   "name": "string.quoted.double.forth",
+   "begin": "(?i)(?<=^|\\s)(\\.\"|s\"|c\"|abort\")(?=\\s)",
+   "beginCaptures": {
+    "1": {
+     "name": "keyword.other.string.forth"
+    }
+   },
+   "end": "\""
+  },
+  "definition": {
+   "match": "(?<=^|\\s)(:)\\s+(\\S+)",
+   "captures": {
+    "1": {
+     "name": "keyword.other.colon.forth"
+    },
+    "2": {
+     "name": "entity.name.function.forth"
+    }
+   }
+  },
+  "defining": {
+   "patterns": [
+    {
+     "match": "(?i)(?<=^|\\s)(variable|constant|create)\\s+(\\S+)",
+     "captures": {
+      "1": {
+       "name": "storage.type.forth"
+      },
+      "2": {
+       "name": "entity.name.variable.forth"
+      }
+     }
+    },
+    {
+     "name": "keyword.other.colon.forth",
+     "match": "(?<=^|\\s);(?=\\s|$)"
+    },
+    {
+     "name": "storage.modifier.forth",
+     "match": "(?i)(?<=^|\\s)(immediate|does>|postpone|literal|\\[|\\]|recurse)(?=\\s|$)"
+    }
+   ]
+  },
+  "control": {
+   "name": "keyword.control.forth",
+   "match": "(?i)(?<=^|\\s)(if|else|then|begin|until|again|while|repeat|do|loop|\\+loop|leave|unloop|exit|i|j)(?=\\s|$)"
+  },
+  "number": {
+   "name": "constant.numeric.forth",
+   "match": "(?<=^|\\s)(-?[0-9]+|[$]-?[0-9A-Fa-f]+|#-?[0-9]+|%-?[01]+|'.')(?=\\s|$)"
+  }
+ }
+}

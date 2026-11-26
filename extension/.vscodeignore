@@ -1,0 +1,17 @@
+test/**
+tools/**
+.gitignore
+package-lock.json
+node_modules/vscode-textmate/**
+node_modules/vscode-oniguruma/**
+node_modules/@serialport/bindings-cpp/prebuilds/android-*/**
+node_modules/**/*.md
+node_modules/**/*.map
+node_modules/**/*.d.ts
+node_modules/node-addon-api/**
+node_modules/@serialport/bindings-cpp/src/**
+node_modules/@serialport/bindings-cpp/binding.gyp
+*.vsix
+wasm/*.c
+wasm/*.h
+wasm/*.sh

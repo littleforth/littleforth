@@ -1,0 +1,14 @@
+littleFORTH is MIT licensed (see LICENSE), except for these files, which keep
+their own licences and copyright notices:
+
+lib/rp2350/RP2350.svd       Copyright (c) 2024 Raspberry Pi Ltd.              BSD-3-Clause
+
+The register tables and drivers generated from it (lib/rp2350/, dist/*.tbl,
+the extension's data/*.json) are derived from this file.
+
+test/tester.fr, test/core.fr  (C) 1995 Johns Hopkins University / Applied Physics
+    Laboratory (John Hayes): "may be distributed freely as long as this copyright
+    notice remains".
+
+The Pico 2 boot block and UF2 constants (board/pico2.c, tools/uf2.py) follow the
+Raspberry Pi Pico SDK, Copyright (c) 2020 Raspberry Pi (Trading) Ltd., BSD-3-Clause.

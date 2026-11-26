@@ -1,0 +1,7 @@
+# LF everywhere, so every clone (Windows included) gives the same kernel STAMP,
+# which hashes the kernel sources (Makefile).
+* text=auto eol=lf
+*.bat text eol=crlf
+# kept byte for byte: built images (D1 compares them) and SVDs as their makers ship them
+dist/** -text
+*.svd -text

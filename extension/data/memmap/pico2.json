@@ -1,0 +1,135 @@
+{
+"regions":[
+[
+268435456,
+268435560,
+"flash: boot (the vector pair, IMAGE_DEF, the copy into RAM)"
+],
+[
+268435560,
+268443432,
+"flash: the kernel, copied into RAM when the board starts"
+],
+[
+272105472,
+272140724,
+"flash: the register table (names of the chip's registers)"
+],
+[
+272498688,
+272629760,
+"flash: the SAVE area (the dictionary SAVE wrote, restored at boot)"
+],
+[
+536870912,
+536871184,
+"RAM: the vector table"
+],
+[
+536871184,
+536879056,
+"RAM: the kernel's code and constants (copied from flash)"
+],
+[
+536879056,
+536879132,
+"RAM: the state at the last fault (pc, registers, the data stack)"
+],
+[
+536879132,
+536879136,
+"RAM: IPSR of the interrupt being handled, for fault()"
+],
+[
+536879136,
+536879344,
+"RAM: interrupt handlers (one xt per IRQ, IRQ!)"
+],
+[
+536879344,
+536879364,
+"RAM: the error recovery point (ABORT, THROW)"
+],
+[
+536879364,
+536944900,
+"RAM: the dictionary"
+],
+[
+536944900,
+536945248,
+"RAM: kernel variables (STATE BASE >IN SOURCE HERE LATEST, the input line, WORD, HOLD)"
+],
+[
+536945248,
+536945252,
+"RAM: the pointer to the kernel variables"
+],
+[
+536945252,
+536945764,
+"RAM: the data stack"
+],
+[
+536945764,
+536945768,
+"RAM: characters dropped by the last accept"
+],
+[
+536945768,
+536945769,
+"RAM: something printed on this line"
+],
+[
+536945769,
+536945770,
+"RAM: the console's receive buffer, filled by the UART interrupt"
+],
+[
+536945770,
+536945771,
+"RAM: the console's receive buffer, filled by the UART interrupt"
+],
+[
+536945771,
+536945899,
+"RAM: the console's receive buffer, filled by the UART interrupt"
+],
+[
+536945900,
+537395200,
+"RAM: free, then the return stack (rsp grows down from the top)"
+]
+],
+"cells":{
+"536944900":"STATE",
+"536944904":"BASE",
+"536944908":">IN",
+"536944912":"SOURCE (src)",
+"536944916":"SOURCE (srclen)",
+"536944920":"srcid (0 console, -1 EVALUATE)",
+"536944924":"HERE (dictionary pointer)",
+"536944928":"latest (newest header)",
+"536944932":"LEAVE (LEAVE chain while compiling a loop)",
+"536944936":"hld (pictured numeric output pointer)",
+"536944940":"echo (ACCEPT echoes input when set)",
+"536944944":"blktab (library block name table, 0: none; set at boot from the block header, the builder points it at its RAM table)",
+"536944948":"dot (TYPE.WORD, put together for INSTANCE.WORD), 32 bytes",
+"536944980":"tib, 128 bytes",
+"536945108":"WORD (WORD: counted string), 66 bytes",
+"536945174":"HOLD (<# ... #> builds down from the end), 72 bytes",
+"536945252":"data stack guard (64 cells)",
+"536945508":"data stack: the deepest of 64 cells",
+"536945760":"data stack: the top (psp when empty)"
+},
+"code":[
+[
+536871184,
+536879056
+],
+[
+536879364,
+536944900
+]
+]
+}

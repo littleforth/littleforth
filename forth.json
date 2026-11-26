@@ -1,0 +1,4 @@
+{
+  "board": "Pico 2",
+  "libraries": ["lib/rp2350/drivers"]
+}

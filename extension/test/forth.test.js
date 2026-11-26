@@ -1,0 +1,30 @@
+'use strict';
+const test = require('node:test');
+const assert = require('node:assert');
+const path = require('path');
+const fs = require('fs');
+const { Forth } = require('../src/forth');
+const HOST = path.resolve(__dirname, '..', '..', 'build', process.platform === 'win32' ? 'host.exe' : 'host');
+const skip = !fs.existsSync(HOST) && 'needs build/host';
+
+test('connect, run, stack, words', { skip }, async () => {
+  const f = new Forth();
+  const notes = [];
+  f.on('note', n => notes.push(n));
+  assert.ok(await f.connect('run:' + HOST));
+  assert.strictEqual(f.state, 'ready');
+  assert.strictEqual(f.board, 'Host build');
+  let r = await f.run('3 4');
+  assert.strictEqual(r.error, null);
+  assert.deepStrictEqual(f.stack.items, ['3', '4']);
+  assert.strictEqual(f.stackText(), '( 3 4 ) ');
+  r = await f.run(': SQ DUP * ;');
+  assert.ok(f.words.includes('SQ'));
+  r = await f.run('+ SQ .');
+  assert.strictEqual(r.text.trim(), '49');
+  assert.deepStrictEqual(f.stack.items, []);
+  r = await f.run('NOPE');
+  assert.strictEqual(r.error, -13);
+  await f.disconnect();
+  assert.strictEqual(f.state, 'off');
+});

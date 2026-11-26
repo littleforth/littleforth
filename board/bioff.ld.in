@@ -1,0 +1,6 @@
+/* bioff.ld.in - each builtin's address as an offset from KBASE, where the
+   kernel's code is linked. Run through cpp per board (Makefile); interp.c's
+   16-bit table refers to these. EXTERN keeps each word through --gc-sections. */
+#include "wordlist.h"
+#define X(c, n, f) EXTERN(w_##c) bo_##c = w_##c - KBASE + 1;   /* + 1: the Thumb bit, which a linker script address leaves out */
+WORDS(X)

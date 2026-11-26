@@ -1,0 +1,682 @@
+[
+[
+"r0 r1 r2 adds,",
+"adds r0, r1, r2"
+],
+[
+"r0 r1 r2 subs,",
+"subs r0, r1, r2"
+],
+[
+"r0 r0 r1 add,",
+"add r0, r0, r1"
+],
+[
+"r8 r8 r9 add,",
+"add r8, r8, r9"
+],
+[
+"r0 r1 r8 add,",
+"add r0, r1, r8"
+],
+[
+"r8 r9 r10 sub,",
+"sub r8, r9, r10"
+],
+[
+"r0 r1 3 adds,",
+"adds r0, r1, #3"
+],
+[
+"r2 r2 200 adds,",
+"adds r2, r2, #200"
+],
+[
+"r0 r0 1 subs,",
+"subs r0, r0, #1"
+],
+[
+"r0 r1 7 subs,",
+"subs r0, r1, #7"
+],
+[
+"r0 r1 1000 add,",
+"add r0, r1, #1000"
+],
+[
+"r0 r1 4095 add,",
+"addw r0, r1, #4095"
+],
+[
+"r9 r9 $FF00 adds,",
+"adds r9, r9, #0xFF00"
+],
+[
+"r0 r1 $10001 sub,",
+"sub r0, r1, #0x10001"
+],
+[
+"r0 r1 -5 adds,",
+"subs r0, r1, #5"
+],
+[
+"r3 r3 -1 add,",
+"sub r3, r3, #1"
+],
+[
+"sp sp 16 add,",
+"add sp, sp, #16"
+],
+[
+"sp sp 16 sub,",
+"sub sp, sp, #16"
+],
+[
+"r1 sp 8 add,",
+"add r1, sp, #8"
+],
+[
+"r8 sp 8 add,",
+"add r8, sp, #8"
+],
+[
+"r0 r0 r1 ands,",
+"ands r0, r0, r1"
+],
+[
+"r0 r1 r2 ands,",
+"ands r0, r1, r2"
+],
+[
+"r0 r0 r1 and,",
+"and r0, r0, r1"
+],
+[
+"r0 r0 $FF and,",
+"and r0, r0, #0xFF"
+],
+[
+"r1 r1 r2 orrs,",
+"orrs r1, r1, r2"
+],
+[
+"r1 r2 $80000000 orr,",
+"orr r1, r2, #0x80000000"
+],
+[
+"r4 r4 r5 eors,",
+"eors r4, r4, r5"
+],
+[
+"r4 r5 $00FF00FF eor,",
+"eor r4, r5, #0x00FF00FF"
+],
+[
+"r4 r5 $FF00FF00 eor,",
+"eor r4, r5, #0xFF00FF00"
+],
+[
+"r4 r5 $ABABABAB eor,",
+"eor r4, r5, #0xABABABAB"
+],
+[
+"r0 r0 r1 bics,",
+"bics r0, r0, r1"
+],
+[
+"r0 r1 3 bic,",
+"bic r0, r1, #3"
+],
+[
+"r0 r1 r2 orn,",
+"orn r0, r1, r2"
+],
+[
+"r0 r1 $F0 orns,",
+"orns r0, r1, #0xF0"
+],
+[
+"r0 r0 r1 adcs,",
+"adcs r0, r0, r1"
+],
+[
+"r0 r0 r1 sbcs,",
+"sbcs r0, r0, r1"
+],
+[
+"r8 r9 1 adc,",
+"adc r8, r9, #1"
+],
+[
+"r0 r1 r2 sbc,",
+"sbc r0, r1, r2"
+],
+[
+"r0 r1 0 rsbs,",
+"rsbs r0, r1, #0"
+],
+[
+"r0 r1 10 rsb,",
+"rsb r0, r1, #10"
+],
+[
+"r0 r1 r2 rsb,",
+"rsb r0, r1, r2"
+],
+[
+"r0 r1 mov,",
+"mov r0, r1"
+],
+[
+"r8 r1 mov,",
+"mov r8, r1"
+],
+[
+"tos psp mov,",
+"mov r6, r5"
+],
+[
+"r0 r1 movs,",
+"movs r0, r1"
+],
+[
+"r0 5 movs,",
+"movs r0, #5"
+],
+[
+"r0 255 movs,",
+"movs r0, #255"
+],
+[
+"r0 5 mov,",
+"mov r0, #5"
+],
+[
+"r8 $FF000000 movs,",
+"movs r8, #0xFF000000"
+],
+[
+"r0 $1234 mov,",
+"movw r0, #0x1234"
+],
+[
+"r0 r1 mvns,",
+"mvns r0, r1"
+],
+[
+"r0 0 mvn,",
+"mvn r0, #0"
+],
+[
+"r0 $1234 movw,",
+"movw r0, #0x1234"
+],
+[
+"r0 $5678 movt,",
+"movt r0, #0x5678"
+],
+[
+"r9 $ABCD movw,",
+"movw r9, #0xABCD"
+],
+[
+"r0 1 cmp,",
+"cmp r0, #1"
+],
+[
+"r0 r1 cmp,",
+"cmp r0, r1"
+],
+[
+"r8 r1 cmp,",
+"cmp r8, r1"
+],
+[
+"r0 1000 cmp,",
+"cmp r0, #1000"
+],
+[
+"r8 0 cmp,",
+"cmp r8, #0"
+],
+[
+"r0 -1 cmp,",
+"cmn r0, #1"
+],
+[
+"r0 r1 cmn,",
+"cmn r0, r1"
+],
+[
+"r0 r1 tst,",
+"tst r0, r1"
+],
+[
+"r0 1 tst,",
+"tst r0, #1"
+],
+[
+"r0 r1 teq,",
+"teq r0, r1"
+],
+[
+"r9 $100 tst,",
+"tst r9, #0x100"
+],
+[
+"r0 r1 2 lsls,",
+"lsls r0, r1, #2"
+],
+[
+"r0 r1 31 lsrs,",
+"lsrs r0, r1, #31"
+],
+[
+"r0 r1 32 asrs,",
+"asrs r0, r1, #32"
+],
+[
+"r0 r1 4 lsl,",
+"lsl r0, r1, #4"
+],
+[
+"r0 r1 3 rors,",
+"rors r0, r1, #3"
+],
+[
+"r8 r9 1 lsr,",
+"lsr r8, r9, #1"
+],
+[
+"r0 r0 r1 lsls,",
+"lsls r0, r0, r1"
+],
+[
+"r0 r0 r1 rors,",
+"rors r0, r0, r1"
+],
+[
+"r0 r1 r2 asr,",
+"asr r0, r1, r2"
+],
+[
+"r8 r9 r10 lsrs,",
+"lsrs r8, r9, r10"
+],
+[
+"r0 r1 r0 muls,",
+"muls r0, r1, r0"
+],
+[
+"r0 r1 r2 mul,",
+"mul r0, r1, r2"
+],
+[
+"r0 r1 r2 r3 mla,",
+"mla r0, r1, r2, r3"
+],
+[
+"r0 r1 r2 r3 mls,",
+"mls r0, r1, r2, r3"
+],
+[
+"r0 r1 r2 r3 umull,",
+"umull r0, r1, r2, r3"
+],
+[
+"r4 r5 r6 r7 smull,",
+"smull r4, r5, r6, r7"
+],
+[
+"r0 r1 r2 udiv,",
+"udiv r0, r1, r2"
+],
+[
+"r8 r9 r10 sdiv,",
+"sdiv r8, r9, r10"
+],
+[
+"r0 r1 clz,",
+"clz r0, r1"
+],
+[
+"r0 r1 rbit,",
+"rbit r0, r1"
+],
+[
+"r0 r1 rev,",
+"rev r0, r1"
+],
+[
+"r8 r9 rev,",
+"rev r8, r9"
+],
+[
+"r0 r1 rev16,",
+"rev16 r0, r1"
+],
+[
+"r0 r1 revsh,",
+"revsh r0, r1"
+],
+[
+"r0 r1 uxtb,",
+"uxtb r0, r1"
+],
+[
+"r0 r1 uxth,",
+"uxth r0, r1"
+],
+[
+"r0 r1 sxtb,",
+"sxtb r0, r1"
+],
+[
+"r0 r1 sxth,",
+"sxth r0, r1"
+],
+[
+"r8 r1 uxtb,",
+"uxtb r8, r1"
+],
+[
+"r0 r1 4 8 ubfx,",
+"ubfx r0, r1, #4, #8"
+],
+[
+"r0 r1 0 1 sbfx,",
+"sbfx r0, r1, #0, #1"
+],
+[
+"r0 r1 8 4 bfi,",
+"bfi r0, r1, #8, #4"
+],
+[
+"r0 3 5 bfc,",
+"bfc r0, #3, #5"
+],
+[
+"r0 r1 0 ldr,",
+"ldr r0, [r1, #0]"
+],
+[
+"r0 r1 124 ldr,",
+"ldr r0, [r1, #124]"
+],
+[
+"r0 r1 128 ldr,",
+"ldr r0, [r1, #128]"
+],
+[
+"r0 r1 -4 ldr,",
+"ldr r0, [r1, #-4]"
+],
+[
+"r0 r1 r2 ldr,",
+"ldr r0, [r1, r2]"
+],
+[
+"r8 r1 r2 ldr,",
+"ldr r8, [r1, r2]"
+],
+[
+"r0 sp 8 ldr,",
+"ldr r0, [sp, #8]"
+],
+[
+"r0 sp 8 str,",
+"str r0, [sp, #8]"
+],
+[
+"r0 r1 31 ldrb,",
+"ldrb r0, [r1, #31]"
+],
+[
+"r0 r1 62 ldrh,",
+"ldrh r0, [r1, #62]"
+],
+[
+"r0 r1 3 strb,",
+"strb r0, [r1, #3]"
+],
+[
+"r0 r1 2 strh,",
+"strh r0, [r1, #2]"
+],
+[
+"r0 r1 r2 ldrsb,",
+"ldrsb r0, [r1, r2]"
+],
+[
+"r0 r1 4 ldrsh,",
+"ldrsh r0, [r1, #4]"
+],
+[
+"r0 r1 1 ldrsb,",
+"ldrsb r0, [r1, #1]"
+],
+[
+"r8 r9 4000 str,",
+"str r8, [r9, #4000]"
+],
+[
+"tos psp -4 []! str,",
+"str r6, [r5, #-4]!"
+],
+[
+"tos psp 4 []+ ldr,",
+"ldr r6, [r5], #4"
+],
+[
+"r0 r1 1 []+ ldrb,",
+"ldrb r0, [r1], #1"
+],
+[
+"r0 r1 -2 []! strh,",
+"strh r0, [r1, #-2]!"
+],
+[
+"r0 pushd,",
+"str r0, [r5, #-4]!"
+],
+[
+"r1 popd,",
+"ldr r1, [r5], #4"
+],
+[
+"r0 r1 r2 8 ldrd,",
+"ldrd r0, r1, [r2, #8]"
+],
+[
+"r0 r1 sp -8 []! strd,",
+"strd r0, r1, [sp, #-8]!"
+],
+[
+"r2 r3 r4 16 []+ ldrd,",
+"ldrd r2, r3, [r4], #16"
+],
+[
+"{ r4 lr } push,",
+"push {r4, lr}"
+],
+[
+"{ r4 r5 r6 r7 pc } pop,",
+"pop {r4, r5, r6, r7, pc}"
+],
+[
+"{ r4 r8 lr } push,",
+"push {r4, r8, lr}"
+],
+[
+"{ r8 } push,",
+"push {r8}"
+],
+[
+"{ r9 } pop,",
+"pop {r9}"
+],
+[
+"{ r4 r10 pc } pop,",
+"pop {r4, r10, pc}"
+],
+[
+"r0 { r1 r2 } ldm!,",
+"ldm r0!, {r1, r2}"
+],
+[
+"r0 { r1 r2 } stm!,",
+"stm r0!, {r1, r2}"
+],
+[
+"r8 { r1 r2 } ldm!,",
+"ldm r8!, {r1, r2}"
+],
+[
+"r0 { r1 r9 } ldm,",
+"ldm r0, {r1, r9}"
+],
+[
+"r0 { r1 r2 } stm,",
+"stm r0, {r1, r2}"
+],
+[
+"r5 { r0 r1 } stmdb!,",
+"stmdb r5!, {r0, r1}"
+],
+[
+"r5 { r0 r1 } ldmdb!,",
+"ldmdb r5!, {r0, r1}"
+],
+[
+"r0 bx,",
+"bx r0"
+],
+[
+"r3 blx,",
+"blx r3"
+],
+[
+"ret,",
+"bx lr"
+],
+[
+"eq it, r0 r0 1 add,",
+"it eq\n addeq r0, r0, #1"
+],
+[
+"ne itt, r0 r0 1 add, r1 r1 1 sub,",
+"itt ne\n addne r0, r0, #1\n subne r1, r1, #1"
+],
+[
+"ge ite, r0 r1 mov, r0 r2 mov,",
+"ite ge\n movge r0, r1\n movlt r0, r2"
+],
+[
+"lt itet, r0 1 mov, r0 2 mov, r0 3 mov,",
+"itet lt\n movlt r0, #1\n movge r0, #2\n movlt r0, #3"
+],
+[
+"eq it, r0 r0 1 adds,",
+"it eq\n addseq r0, r0, #1"
+],
+[
+"hi itee, r1 r1 r2 add, r1 r1 r3 add, r1 r1 r4 add,",
+"itee hi\n addhi r1, r1, r2\n addls r1, r1, r3\n addls r1, r1, r4"
+],
+[
+"nop,",
+"nop"
+],
+[
+"wfi,",
+"wfi"
+],
+[
+"wfe,",
+"wfe"
+],
+[
+"sev,",
+"sev"
+],
+[
+"yield,",
+"yield"
+],
+[
+"cpsid,",
+"cpsid i"
+],
+[
+"cpsie,",
+"cpsie i"
+],
+[
+"3 bkpt,",
+"bkpt 3"
+],
+[
+"1 svc,",
+"svc 1"
+],
+[
+"dsb,",
+"dsb sy"
+],
+[
+"dmb,",
+"dmb sy"
+],
+[
+"isb,",
+"isb sy"
+],
+[
+"r0 primask mrs,",
+"mrs r0, primask"
+],
+[
+"primask r0 msr,",
+"msr primask, r0"
+],
+[
+"r1 control mrs,",
+"mrs r1, control"
+],
+[
+"basepri r2 msr,",
+"msr basepri, r2"
+],
+[
+"r0 psp-sys mrs,",
+"mrs r0, psp"
+],
+[
+"r0 ipsr mrs,",
+"mrs r0, ipsr"
+],
+[
+"r0 10 mov32,",
+"mov r0, #10"
+],
+[
+"r0 $12345678 mov32,",
+"movw r0, #0x5678\n movt r0, #0x1234"
+],
+[
+"r0 -2 mov32,",
+"mvn r0, #1"
+],
+[
+"r0 $D0000000 mov32,",
+"mov r0, #0xD0000000"
+],
+[
+"r0 $20000 mov32,",
+"mov r0, #0x20000"
+],
+[
+"r0 $FFFF mov32,",
+"movw r0, #0xFFFF"
+]
+]
