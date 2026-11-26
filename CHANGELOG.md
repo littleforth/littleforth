@@ -1,5 +1,9 @@
 # Changes
 
+## 0.5.2 (beta)
+
+The extension's store page and description now match the README.
+
 ## 0.5.1 (beta)
 
 The first public release: the RP2350, on the Raspberry Pi Pico 2 and Pico 2 W.

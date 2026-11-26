@@ -1,8 +1,8 @@
 {
   "name": "littleforth",
   "displayName": "littleFORTH",
-  "description": "A small, native Forth for microcontrollers: type a line, it runs on the chip. Live stacks, values, memory and registers; debugger and profiler.",
-  "version": "0.5.1",
+  "description": "A small, native Forth for microcontrollers, with live, interactive development and debugging in VS Code.",
+  "version": "0.5.2",
   "license": "MIT",
   "repository": {
     "type": "git",
