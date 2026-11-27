@@ -9,7 +9,7 @@ Made for learning and experimenting: see the stack after every line, the machine
 
 **Beta:** RP2350, on the Raspberry Pi Pico 2 and Pico 2 W.
 
-<!-- demo GIF: type a line, the LED changes; the stack lens; the Memory map -->
+![littleFORTH in VS Code: blink.fth sent to a Pico 2, the LED switched on from the console, SIO.GPIO_OUT on the scope](docs/logo/screenshot.png)
 
 ## Features
 
