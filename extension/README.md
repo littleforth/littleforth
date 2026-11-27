@@ -10,7 +10,7 @@ Made for learning and experimenting: see the stack after every line, the machine
 ## Features
 
 - **A Forth kernel** in under 8 KB of flash.
-- **ANS / Forth 2012 CORE compliant:** see [Forth 2012 CORE tests](https://forth-standard.org/standard/testsuite) and John Hayes' 1995 suite for ANS Forth in [test/core.fr](https://github.com/littleforth/littleforth/blob/main/test/core.fr).
+- **ANS / Forth 2012 CORE compliant:** see [Forth 2012 CORE tests](https://forth-standard.org/standard/testsuite) and John Hayes' 1995 suite for ANS Forth in [test/core.fr](https://github.com/littleforth/littleFORTH/blob/main/test/core.fr).
 - **Native-code compiler:** transforms word definitions to machine code on the chip.
 - **Subroutine threading (STC) with inlining:** each word in a definition is compiled as a call (BL), but small primitives like `DUP` and `+` are copied in directly.
 - **Dictionary:** new word definitions are held in a 64 KB dictionary in RAM. `SAVE` stores it in flash.
@@ -38,29 +38,29 @@ Made for learning and experimenting: see the stack after every line, the machine
    Without a Board* and type Forth straight away: the kernel also runs inside
    VS Code.
 2. With a Pico 2 or Pico 2 W and a Raspberry Pi Debug Probe: wire the probe,
-   flash from the extension, and blink an LED. [Getting started](https://github.com/littleforth/littleforth/blob/main/docs/getting-started.md)
+   flash from the extension, and blink an LED. [Getting started](https://github.com/littleforth/littleFORTH/blob/main/docs/getting-started.md)
    takes you through it.
 3. The console is on UART0 (GP0/GP1), not the Pico's USB port. A USB-serial adapter on GP0/GP1 also works, for the console only.
 
 ## Documentation
 
-- [Getting started](https://github.com/littleforth/littleforth/blob/main/docs/getting-started.md)
-- [The extension](https://github.com/littleforth/littleforth/blob/main/docs/extension.md)
-- [Words](https://github.com/littleforth/littleforth/blob/main/docs/words.md)
-- [Drivers](https://github.com/littleforth/littleforth/blob/main/lib/rp2350/drivers/README.md)
-- [How it works](https://github.com/littleforth/littleforth/blob/main/docs/architecture.md)
-- [Building from source](https://github.com/littleforth/littleforth/blob/main/docs/building.md)
-- [Changes](https://github.com/littleforth/littleforth/blob/main/CHANGELOG.md)
+- [Getting started](https://github.com/littleforth/littleFORTH/blob/main/docs/getting-started.md)
+- [The extension](https://github.com/littleforth/littleFORTH/blob/main/docs/extension.md)
+- [Words](https://github.com/littleforth/littleFORTH/blob/main/docs/words.md)
+- [Drivers](https://github.com/littleforth/littleFORTH/blob/main/lib/rp2350/drivers/README.md)
+- [How it works](https://github.com/littleforth/littleFORTH/blob/main/docs/architecture.md)
+- [Building from source](https://github.com/littleforth/littleFORTH/blob/main/docs/building.md)
+- [Changes](https://github.com/littleforth/littleFORTH/blob/main/CHANGELOG.md)
 
 ## Help and ideas
 
 Bug reports, questions and ideas are welcome in
-[Issues](https://github.com/littleforth/littleforth/issues).
+[Issues](https://github.com/littleforth/littleFORTH/issues).
 
 littleFORTH is free and made in spare time. If it is useful to you,
 [buying me a coffee](https://ko-fi.com/littleforth) keeps it going.
 
 ## Licence
 
-MIT (see [LICENSE](https://github.com/littleforth/littleforth/blob/main/LICENSE)). Third-party files and their licences are listed
-in [NOTICE](https://github.com/littleforth/littleforth/blob/main/NOTICE).
+MIT (see [LICENSE](https://github.com/littleforth/littleFORTH/blob/main/LICENSE)). Third-party files and their licences are listed
+in [NOTICE](https://github.com/littleforth/littleFORTH/blob/main/NOTICE).

@@ -77,7 +77,7 @@ host build's `main()` is in [board/host.c](board/host.c).
 ## Help and ideas
 
 Bug reports, questions and ideas are welcome in
-[Issues](https://github.com/littleforth/littleforth/issues).
+[Issues](https://github.com/littleforth/littleFORTH/issues).
 
 littleFORTH is free and made in spare time. If it is useful to you,
 [buying me a coffee](https://ko-fi.com/littleforth) keeps it going.

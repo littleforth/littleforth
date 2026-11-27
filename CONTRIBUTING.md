@@ -1,6 +1,6 @@
 # Contributing
 
-Bug reports, ideas and questions: open an [issue](https://github.com/littleforth/littleforth/issues).
+Bug reports, ideas and questions: open an [issue](https://github.com/littleforth/littleFORTH/issues).
 
 Code: open an issue first to talk it over. Then a pull request, with `make check`
 passing (see [docs/building.md](docs/building.md)).

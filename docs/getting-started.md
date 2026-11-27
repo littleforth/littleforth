@@ -19,7 +19,7 @@ The inevitable "Hello World" of embedded development, a blinky LED on a Raspberr
 ## 1. Install the extension
 
 In VS Code's Extensions view, search for **littleFORTH** and install it. Or take
-the `.vsix` from a [Release](https://github.com/littleforth/littleforth/releases)
+the `.vsix` from a [Release](https://github.com/littleforth/littleFORTH/releases)
 and use `...` > *Install from VSIX...*.
 
 No board yet? Run **Forth: Work Without a Board** from the Command Palette. The

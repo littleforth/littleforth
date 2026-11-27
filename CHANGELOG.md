@@ -1,5 +1,9 @@
 # Changes
 
+## 0.5.3 (beta)
+
+Links point to the repository's new name, littleforth/littleFORTH.
+
 ## 0.5.2 (beta)
 
 The extension's store page and description now match the README.

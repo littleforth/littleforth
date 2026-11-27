@@ -2,16 +2,16 @@
   "name": "littleforth",
   "displayName": "littleFORTH",
   "description": "A small, native Forth for microcontrollers, with live, interactive development and debugging in VS Code.",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/littleforth/littleforth"
+    "url": "https://github.com/littleforth/littleFORTH"
   },
   "bugs": {
-    "url": "https://github.com/littleforth/littleforth/issues"
+    "url": "https://github.com/littleforth/littleFORTH/issues"
   },
-  "homepage": "https://github.com/littleforth/littleforth",
+  "homepage": "https://github.com/littleforth/littleFORTH",
   "icon": "media/icon.png",
   "publisher": "littleforth",
   "engines": {

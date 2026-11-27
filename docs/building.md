@@ -2,7 +2,7 @@
 
 You only need this to change the kernel or the extension. To use littleFORTH,
 take the firmware and the extension from a
-[Release](https://github.com/littleforth/littleforth/releases), or flash from the
+[Release](https://github.com/littleforth/littleFORTH/releases), or flash from the
 extension itself ([getting-started.md](getting-started.md)).
 
 ## Tools
